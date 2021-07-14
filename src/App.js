@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import './styles/App.css';
+import React, {Component} from 'react';
+import Header from './components/header';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      basicInfo: {
+        firstName: 'aa',
+        lastName: 'bb',
+        email: 'xx',
+        phone: 'zz',
+      },
+      testData: '',
+    }
+  }
+
+  render() { //props passed should be named correctly in component
+    const {basicInfo} = this.state;
+    return (
+      <div className="App">
+        <Header basicInfo={basicInfo}/>
+      </div>
+    );
+  }
 }
+
+/*
+  - resume                                          - resume.js
+    - Header bar with name, email, phone, (contact) - header.js
+    - Summary/Career objective                      - summary.js
+    - Education (name, degree title, dates)         - edu.js
+    - Experience(title, company, dates, tasks)      - exp.js
+*/
 
 export default App;
