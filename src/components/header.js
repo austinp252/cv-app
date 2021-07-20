@@ -1,13 +1,10 @@
 import React from "react";
+import '../styles/header.css';
 
-const Header = (props) => {
-    const { basicInfo } = props;
+const Header = () => {
     return(
-        <div>
-            <h2>First Name: {basicInfo.firstName}</h2>
-            <h2>Last Name: {basicInfo.lastName}</h2>
-            <h2>Email: {basicInfo.email}</h2>
-            <h2>Phone: {basicInfo.phone}</h2>
+        <div className='header'>
+           <h2>myCV Generator</h2>
         </div>
     );
 };
