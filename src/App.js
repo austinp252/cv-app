@@ -34,9 +34,6 @@ class App extends Component {
     });
   };
 
-  handleUpdateBasicInfo = (e) => { //need temp storage to use
-  }
-
   onSubmitBasicInfo = (e) => {
     e.preventDefault();
     this.setState({
@@ -84,6 +81,42 @@ class App extends Component {
     })
   }
 
+  onSubmitExpItem = (e, id) => {
+    e.preventDefault();
+    let copyList = this.state.expItems;
+    let index = copyList.findIndex(item => item.id === id);
+    let expItem = copyList[index];
+    expItem.company = e.target.companyNameInput.value;
+    expItem.title = e.target.titleNameInput.value;
+    expItem.startDate = e.target.startDateInput.value;
+    expItem.endDate = e.target.endDateInput.value;
+    expItem.task = e.target.taskInput.value;
+    this.setState({
+      expItems: copyList,
+    })
+  }
+
+  onDeleteExpItem = (id) => {
+    let copyList = this.state.expItems;
+    copyList = copyList.filter(item => item.id !== id);
+    this.setState({
+      expItems: copyList,
+    });
+  }
+
+  addExpItem = () => {
+    this.setState({
+      expItems: this.state.expItems.concat({
+        company: '',
+        title: '',
+        startDate: '',
+        endDate: '',
+        task: '',
+        id: uniqid(),
+      })
+    })
+  }
+
   render() { //props passed should be named correctly in component
     const {editMode, basicInfo, eduItem} = this.state;
     let contentBasic = null;
@@ -116,6 +149,8 @@ class App extends Component {
         </div>
       </div>;
     }
+
+
     return (
       <div className="App">
         <Header/>
@@ -131,9 +166,14 @@ class App extends Component {
             Preview Mode</button>
         </div>
         <div>{contentBasic}</div>
+
         <Edu editMode = {this.state.editMode} eduItems = {this.state.eduItems} onSubmitEduItem = {this.onSubmitEduItem} onDeleteEduItem = {this.onDeleteEduItem}/>
         <button className = 'addItem' onClick = {() => this.addEduItem()}>
             + Education
+        </button>
+        <Exp editMode = {this.state.editMode} expItems = {this.state.expItems} onSubmitExpItem = {this.onSubmitExpItem} onDeleteExpItem = {this.onDeleteExpItem}/>
+        <button className = 'addItem' onClick = {() => this.addExpItem()}>
+            + Experience
         </button>
       </div>
     );
