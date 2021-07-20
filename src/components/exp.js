@@ -8,6 +8,7 @@ const Exp = (props) => {
                 {expItems.map((expItem) => {
                     return(
                         <div className = 'panel'>
+                            <h2>Experience</h2> 
                             <form onSubmit = {(e) => onSubmitExpItem(e, expItem.id)}>
                                 <label htmlFor="companyNameInput">Company Name</label>
                                 <input placeholder={expItem.company} type="text" id="companyNameInput"></input>

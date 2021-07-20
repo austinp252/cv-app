@@ -1,4 +1,6 @@
 import './styles/App.css';
+import './styles/basicInfo.css';
+import './styles/edu.css';
 import React, {Component} from 'react';
 import Header from './components/header';
 import Edu from './components/edu';
@@ -125,6 +127,7 @@ class App extends Component {
     if(editMode) { //edit mode is toggled
       contentBasic =  
       <div className = 'panel'>
+        <h2>Basic Information</h2> 
         <form onSubmit={this.onSubmitBasicInfo}>
           <label htmlFor="firstNameInput">First Name</label>
           <input placeholder={basicInfo.firstName} type="text" id="firstNameInput"></input>
@@ -141,13 +144,13 @@ class App extends Component {
       </div>;
     } else { //preview mode is toggled
       contentBasic =
-      <div>
-        <div className = 'panel'>
-          <h2>Name: {basicInfo.firstName} {basicInfo.lastName}</h2>
-          <h2>Email Address: {basicInfo.email}</h2>
-          <h2>Phone Number: {basicInfo.phone}</h2>
+        <div className = 'panel-preview-basicInfo'>
+          <img></img>
+          <div>
+            <p className = 'preview-name'>Kevin Anderson{basicInfo.firstName} {basicInfo.lastName}</p>
+            <p className = 'preview-contact'>actuallyAnderson@gmail.com{basicInfo.email} | {basicInfo.phone} 111-111-1111</p>
+          </div>
         </div>
-      </div>;
     }
 
 
@@ -165,28 +168,28 @@ class App extends Component {
           >
             Preview Mode</button>
         </div>
-        <div>{contentBasic}</div>
 
-        <Edu editMode = {this.state.editMode} eduItems = {this.state.eduItems} onSubmitEduItem = {this.onSubmitEduItem} onDeleteEduItem = {this.onDeleteEduItem}/>
-        <button className = 'addItem' onClick = {() => this.addEduItem()}>
-            + Education
-        </button>
-        <Exp editMode = {this.state.editMode} expItems = {this.state.expItems} onSubmitExpItem = {this.onSubmitExpItem} onDeleteExpItem = {this.onDeleteExpItem}/>
-        <button className = 'addItem' onClick = {() => this.addExpItem()}>
-            + Experience
-        </button>
+        <div className = 'content'>
+          <div>{contentBasic}</div>
+          <Edu editMode = {this.state.editMode} eduItems = {this.state.eduItems} onSubmitEduItem = {this.onSubmitEduItem} onDeleteEduItem = {this.onDeleteEduItem}/>
+          <button className = 'addItem' onClick = {() => this.addEduItem()}>
+              + Education
+          </button>
+          <Exp editMode = {this.state.editMode} expItems = {this.state.expItems} onSubmitExpItem = {this.onSubmitExpItem} onDeleteExpItem = {this.onDeleteExpItem}/>
+          <button className = 'addItem' onClick = {() => this.addExpItem()}>
+              + Experience
+          </button>
+        </div>
       </div>
     );
   }
 }
 
 /*
-  - resume                                          - resume.js
-    - Header bar with name, email, phone, (contact) - header.js
-    - Summary/Career objective                      - summary.js
-    - Education (name, degree title, dates)         - edu.js
-    - Experience(title, company, dates, tasks)      - exp.js
-    https://coolors.co/0466c8-0353a4-023e7d-002855-001845-001233-33415c-5c677d-7d8597-979dac
+  - Display in meaningful way on preview mode
+  - Align form items in similar way to form in preview
+  - Seperate Education, experience sections
+  - Change button layout
 */
 
 export default App;

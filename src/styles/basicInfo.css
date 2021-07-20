@@ -1,0 +1,23 @@
+.panel-preview-basicInfo {
+  margin: 30px;
+  width: 1100px;
+  display: flex;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+  background-color: red;
+  margin: 50px 80px 70px 80px;
+}
+
+.preview-name {
+  margin: 35px 40px 0 0;
+  font-size: 90px;
+  font-weight: bold;
+  color: rgb(0, 195, 255);
+}
+
+.preview-contact {
+  font-size: 20px;
+}

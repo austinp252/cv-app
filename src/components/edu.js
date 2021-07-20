@@ -30,16 +30,29 @@ const Edu = (props) => {
             </div>
             );
     } else { //preview mode
-        return(<div>
-            {eduItems.map((eduItem) => {
-                return(
-                <div className='panel'>
-                    <h2>{eduItem.uniName}</h2>
-                    <h2>{eduItem.startDate} - {eduItem.endDate}</h2>
-                    <h2>{eduItem.degreeTitle}</h2>
-                </div>)
-            })}
-        </div>);
+        if(eduItems.length > 0) {
+            return(
+            <div className='panel-preview-edu'>
+                <div className = 'preview-title'>Education</div>
+                <div className = 'preview-items'>
+                {eduItems.map((eduItem) => {
+                    return(
+                    <div className = 'preview-main-content'>
+                        <div className = 'preview-school-info'>
+                            <p>{eduItem.uniName}</p>
+                            <p>{eduItem.degreeTitle}</p>
+                        </div>
+                        <div className = 'preview-school-dates'>
+                            {eduItem.startDate}-{eduItem.endDate}
+                        </div>
+                    </div>
+                    );
+                })}
+                </div>
+            </div>);
+        } else {
+            return(<div></div>)
+        }
     }
 };
 
