@@ -1,7 +1,8 @@
 import './styles/App.css';
 import './styles/basicInfo.css';
 import './styles/edu.css';
-import React, {Component} from 'react';
+import './styles/exp.css';
+import React, { Component } from 'react';
 import Header from './components/header';
 import Edu from './components/edu';
 import Exp from './components/exp';
@@ -56,7 +57,7 @@ class App extends Component {
     let eduItem = copyList[index];
     eduItem.uniName = e.target.uniNameInput.value;
     eduItem.startDate = e.target.startDateInput.value;
-    eduItem.endDateName = e.target.endDateInput.value;
+    eduItem.endDate = e.target.endDateInput.value;
     eduItem.degreeTitle = e.target.degreeTitleInput.value;
     this.setState({
       eduItems: copyList,
@@ -120,35 +121,35 @@ class App extends Component {
   }
 
   render() { //props passed should be named correctly in component
-    const {editMode, basicInfo, eduItem} = this.state;
+    const { editMode, basicInfo, eduItem } = this.state;
     let contentBasic = null;
     let contentEdu = null;
 
-    if(editMode) { //edit mode is toggled
-      contentBasic =  
-      <div className = 'panel'>
-        <h2>Basic Information</h2> 
-        <form onSubmit={this.onSubmitBasicInfo}>
-          <label htmlFor="firstNameInput">First Name</label>
-          <input placeholder={basicInfo.firstName} type="text" id="firstNameInput"></input>
-          <label htmlFor="lastNameInput">Last Name</label>
-          <input placeholder={basicInfo.lastName} type="text" id="lastNameInput"></input>
-          <label htmlFor="emailInput">Email Address</label>
-          <input placeholder={basicInfo.email} type="text" id="emailInput"></input>
-          <label htmlFor="phoneInput">Phone Number</label>
-          <input placeholder={basicInfo.phone} type="text" id="phoneInput"></input>
-          <button type="Submit">
+    if (editMode) { //edit mode is toggled
+      contentBasic =
+        <div className='panel'>
+          <h2>Basic Information</h2>
+          <form onSubmit={this.onSubmitBasicInfo}>
+            <label htmlFor="firstNameInput">First Name</label>
+            <input placeholder={basicInfo.firstName} type="text" id="firstNameInput"></input>
+            <label htmlFor="lastNameInput">Last Name</label>
+            <input placeholder={basicInfo.lastName} type="text" id="lastNameInput"></input>
+            <label htmlFor="emailInput">Email Address</label>
+            <input placeholder={basicInfo.email} type="text" id="emailInput"></input>
+            <label htmlFor="phoneInput">Phone Number</label>
+            <input placeholder={basicInfo.phone} type="text" id="phoneInput"></input>
+            <button type="Submit">
               Submit
           </button>
-        </form>
-      </div>;
+          </form>
+        </div>;
     } else { //preview mode is toggled
       contentBasic =
-        <div className = 'panel-preview-basicInfo'>
+        <div className='panel-preview-basicInfo'>
           <img></img>
           <div>
-            <p className = 'preview-name'>Kevin Anderson{basicInfo.firstName} {basicInfo.lastName}</p>
-            <p className = 'preview-contact'>actuallyAnderson@gmail.com{basicInfo.email} | {basicInfo.phone} 111-111-1111</p>
+            <p className='preview-name'>{basicInfo.firstName} {basicInfo.lastName}</p>
+            <p className='preview-contact'>{basicInfo.email} | {basicInfo.phone}</p>
           </div>
         </div>
     }
@@ -156,29 +157,23 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Header/>
+        <Header />
         <div className='buttons'>
           <button
-          onClick = {this.edit}
+            onClick={this.edit}
           >
-          Edit Mode
+            Edit Mode
           </button>
           <button
-          onClick = {this.preview}
+            onClick={this.preview}
           >
             Preview Mode</button>
         </div>
 
-        <div className = 'content'>
+        <div className='content'>
           <div>{contentBasic}</div>
-          <Edu editMode = {this.state.editMode} eduItems = {this.state.eduItems} onSubmitEduItem = {this.onSubmitEduItem} onDeleteEduItem = {this.onDeleteEduItem}/>
-          <button className = 'addItem' onClick = {() => this.addEduItem()}>
-              + Education
-          </button>
-          <Exp editMode = {this.state.editMode} expItems = {this.state.expItems} onSubmitExpItem = {this.onSubmitExpItem} onDeleteExpItem = {this.onDeleteExpItem}/>
-          <button className = 'addItem' onClick = {() => this.addExpItem()}>
-              + Experience
-          </button>
+          <Edu editMode={this.state.editMode} eduItems={this.state.eduItems} onSubmitEduItem={this.onSubmitEduItem} onDeleteEduItem={this.onDeleteEduItem} addEduItem={this.addEduItem} />
+          <Exp editMode={this.state.editMode} expItems={this.state.expItems} onSubmitExpItem={this.onSubmitExpItem} onDeleteExpItem={this.onDeleteExpItem} addExpItem={this.addExpItem} />
         </div>
       </div>
     );
