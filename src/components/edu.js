@@ -4,11 +4,11 @@ const Edu = (props) => {
     const { editMode, eduItems, onSubmitEduItem, onDeleteEduItem, addEduItem, } = props;
     if (editMode) {
         return (
-            <div className='panel-edit-edu'>
+            <div className='panel-editMode'>
                 <h2>Education</h2>
                 {eduItems.map((eduItem) => {
                     return (
-                        <div className='edit-main-content'>
+                        <div className='item-editMode'>
                             <form onSubmit={(e) => onSubmitEduItem(e, eduItem.id)}>
                                 <label htmlFor="uniNameInput">School Name</label>
                                 <input placeholder={eduItem.uniName} type="text" id="uniNameInput"></input>
@@ -20,11 +20,11 @@ const Edu = (props) => {
                                 <input placeholder={eduItem.degreeTitle} type="text" id="degreeTitleInput"></input>
                                 <button type="Submit">
                                     Submit
-                            </button>
+                                </button>
+                                <button onClick={() => onDeleteEduItem(eduItem.id)}>
+                                    Remove
+                                </button>
                             </form>
-                            <button onClick={() => onDeleteEduItem(eduItem.id)}>
-                                Remove
-                        </button>
                         </div>
                     )
                 })}

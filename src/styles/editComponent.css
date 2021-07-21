@@ -1,0 +1,43 @@
+.panel-editMode {
+    margin: 30px;
+    width: 1100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.panel-editMode .addItem {
+    background-color: rgb(1, 138, 180);
+    width: 500px;
+    height: 60px;
+    margin: 15px 0;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.item-editMode {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-editMode form {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-editMode form input {
+    width: 500px;
+    margin: 15px 0;
+}
+
+.item-editMode form button {
+    width: 500px;
+    height: 60px;
+    margin: 15px 0;
+    background-color: rgb(0, 195, 255);
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}

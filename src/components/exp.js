@@ -4,12 +4,11 @@ const Exp = (props) => {
     const { editMode, expItems, onSubmitExpItem, onDeleteExpItem, addExpItem } = props;
     if (editMode) {
         return (
-            <div className='panel-edit-edu'>
+            <div className='panel-editMode'>
                 <h2>Experience</h2>
                 {expItems.map((expItem) => {
                     return (
-                        <div className='edit-main-content'>
-                            <h2>Experience</h2>
+                        <div className='item-editMode'>
                             <form onSubmit={(e) => onSubmitExpItem(e, expItem.id)}>
                                 <label htmlFor="companyNameInput">Company Name</label>
                                 <input placeholder={expItem.company} type="text" id="companyNameInput"></input>
@@ -24,10 +23,10 @@ const Exp = (props) => {
                                 <button type="Submit">
                                     Submit
                                 </button>
+                                <button onClick={() => onDeleteExpItem(expItem.id)}>
+                                    Remove
+                                </button>
                             </form>
-                            <button onClick={() => onDeleteExpItem(expItem.id)}>
-                                Remove
-                            </button>
                         </div>
                     )
                 })}

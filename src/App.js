@@ -1,12 +1,13 @@
 import './styles/App.css';
-import './styles/basicInfo.css';
-import './styles/edu.css';
-import './styles/exp.css';
+import './styles/editComponent.css';
+import './styles/modeButtons.css';
 
 import React, { Component } from 'react';
 
 import Header from './components/header';
+import ModeButtons from './components/modeButtons';
 import BasicInfo from './components/basicInfo';
+import Summary from './components/summary';
 import Edu from './components/edu';
 import Exp from './components/exp';
 
@@ -23,6 +24,7 @@ class App extends Component {
         lastName: '',
         email: '',
         phone: '',
+        address: '',
       },
       eduItems: [],
       expItems: [],
@@ -50,6 +52,7 @@ class App extends Component {
         lastName: e.target.lastNameInput.value,
         email: e.target.emailInput.value,
         phone: e.target.phoneInput.value,
+        address: e.target.addressInput.value,
       },
     });
 
@@ -133,20 +136,10 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <div className='buttons'>
-          <button
-            onClick={this.edit}
-          >
-            Edit Mode
-          </button>
-          <button
-            onClick={this.preview}
-          >
-            Preview Mode</button>
-        </div>
-
+        <ModeButtons edit={this.edit} preview={this.preview} />
         <div className='content'>
           <BasicInfo editMode={this.state.editMode} basicInfo={this.state.basicInfo} onSubmitBasicInfo={this.onSubmitBasicInfo} />
+          <Summary editMode={this.state.editMode} />
           <Edu editMode={this.state.editMode} eduItems={this.state.eduItems} onSubmitEduItem={this.onSubmitEduItem} onDeleteEduItem={this.onDeleteEduItem} addEduItem={this.addEduItem} />
           <Exp editMode={this.state.editMode} expItems={this.state.expItems} onSubmitExpItem={this.onSubmitExpItem} onDeleteExpItem={this.onDeleteExpItem} addExpItem={this.addExpItem} />
         </div>
@@ -156,10 +149,16 @@ class App extends Component {
 }
 
 /*
-  - Display in meaningful way on preview mode
-  - Align form items in similar way to form in preview
-  - Seperate Education, experience sections
-  - Change button layout
+  - NOTE: remove css files not in use
+
+  - add address to basicInfo
+  - add summary, textbox for tasks
+    - add additional tasks w/ button
+  - Change button layout in edit
+  
+  - onchange vs save changes?
+
+  - refactor styling, imports, organization
 */
 
 export default App;

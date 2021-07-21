@@ -2,9 +2,9 @@ import React from "react";
 import '../styles/header.css';
 
 const Header = () => {
-    return(
+    return (
         <div className='header'>
-           <h2>myCV Generator</h2>
+            <h2>CV Generator</h2>
         </div>
     );
 };
