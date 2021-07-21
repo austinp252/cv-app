@@ -4,10 +4,11 @@ const Exp = (props) => {
     const { editMode, expItems, onSubmitExpItem, onDeleteExpItem, addExpItem } = props;
     if (editMode) {
         return (
-            <div>
+            <div className='panel-edit-edu'>
+                <h2>Experience</h2>
                 {expItems.map((expItem) => {
                     return (
-                        <div className='panel'>
+                        <div className='edit-main-content'>
                             <h2>Experience</h2>
                             <form onSubmit={(e) => onSubmitExpItem(e, expItem.id)}>
                                 <label htmlFor="companyNameInput">Company Name</label>

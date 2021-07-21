@@ -4,7 +4,7 @@ const BasicInfo = (props) => {
     const { editMode, basicInfo, onSubmitBasicInfo } = props;
     if (editMode) {
         return (
-            <div className='panel'>
+            <div className='panel-edit-basicInfo'>
                 <h2>Basic Information</h2>
                 <form onSubmit={(e) => onSubmitBasicInfo(e)}>
                     <label htmlFor="firstNameInput">First Name</label>

@@ -4,10 +4,11 @@ const Edu = (props) => {
     const { editMode, eduItems, onSubmitEduItem, onDeleteEduItem, addEduItem, } = props;
     if (editMode) {
         return (
-            <div>
+            <div className='panel-edit-edu'>
+                <h2>Education</h2>
                 {eduItems.map((eduItem) => {
                     return (
-                        <div className='panel'>
+                        <div className='edit-main-content'>
                             <form onSubmit={(e) => onSubmitEduItem(e, eduItem.id)}>
                                 <label htmlFor="uniNameInput">School Name</label>
                                 <input placeholder={eduItem.uniName} type="text" id="uniNameInput"></input>
