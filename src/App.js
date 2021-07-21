@@ -2,10 +2,14 @@ import './styles/App.css';
 import './styles/basicInfo.css';
 import './styles/edu.css';
 import './styles/exp.css';
+
 import React, { Component } from 'react';
+
 import Header from './components/header';
+import BasicInfo from './components/basicInfo';
 import Edu from './components/edu';
 import Exp from './components/exp';
+
 import uniqid from "uniqid";
 
 class App extends Component {
@@ -38,6 +42,7 @@ class App extends Component {
   };
 
   onSubmitBasicInfo = (e) => {
+
     e.preventDefault();
     this.setState({
       basicInfo: {
@@ -125,36 +130,6 @@ class App extends Component {
     let contentBasic = null;
     let contentEdu = null;
 
-    if (editMode) { //edit mode is toggled
-      contentBasic =
-        <div className='panel'>
-          <h2>Basic Information</h2>
-          <form onSubmit={this.onSubmitBasicInfo}>
-            <label htmlFor="firstNameInput">First Name</label>
-            <input placeholder={basicInfo.firstName} type="text" id="firstNameInput"></input>
-            <label htmlFor="lastNameInput">Last Name</label>
-            <input placeholder={basicInfo.lastName} type="text" id="lastNameInput"></input>
-            <label htmlFor="emailInput">Email Address</label>
-            <input placeholder={basicInfo.email} type="text" id="emailInput"></input>
-            <label htmlFor="phoneInput">Phone Number</label>
-            <input placeholder={basicInfo.phone} type="text" id="phoneInput"></input>
-            <button type="Submit">
-              Submit
-          </button>
-          </form>
-        </div>;
-    } else { //preview mode is toggled
-      contentBasic =
-        <div className='panel-preview-basicInfo'>
-          <img></img>
-          <div>
-            <p className='preview-name'>{basicInfo.firstName} {basicInfo.lastName}</p>
-            <p className='preview-contact'>{basicInfo.email} | {basicInfo.phone}</p>
-          </div>
-        </div>
-    }
-
-
     return (
       <div className="App">
         <Header />
@@ -171,7 +146,7 @@ class App extends Component {
         </div>
 
         <div className='content'>
-          <div>{contentBasic}</div>
+          <BasicInfo editMode={this.state.editMode} basicInfo={this.state.basicInfo} onSubmitBasicInfo={this.onSubmitBasicInfo} />
           <Edu editMode={this.state.editMode} eduItems={this.state.eduItems} onSubmitEduItem={this.onSubmitEduItem} onDeleteEduItem={this.onDeleteEduItem} addEduItem={this.addEduItem} />
           <Exp editMode={this.state.editMode} expItems={this.state.expItems} onSubmitExpItem={this.onSubmitExpItem} onDeleteExpItem={this.onDeleteExpItem} addExpItem={this.addExpItem} />
         </div>

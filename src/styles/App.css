@@ -12,6 +12,7 @@ body {
 }
 
 .content {
+  margin: 30px;
   background-color: rgb(233, 233, 233);
   width: 1100px;
   display: flex;
