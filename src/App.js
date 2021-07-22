@@ -159,9 +159,13 @@ class App extends Component {
 }
 
 /*
-  - add additional tasks w/ button
-  - add gpa to education
-  
+  - styling of hr's
+  - color options
+  - scaling of page
+  - color options
+  - option to select image from pc
+  - footer w/ github  
+
   - onchange vs save changes?
 
   - refactor styling, imports, organization
