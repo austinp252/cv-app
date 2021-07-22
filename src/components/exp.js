@@ -10,22 +10,26 @@ const Exp = (props) => {
                     return (
                         <div className='item-editMode'>
                             <form onSubmit={(e) => onSubmitExpItem(e, expItem.id)}>
-                                <label htmlFor="companyNameInput">Company Name</label>
-                                <input placeholder={expItem.company} type="text" id="companyNameInput"></input>
-                                <label htmlFor="titleNameInput">Title</label>
-                                <input placeholder={expItem.title} type="text" id="titleNameInput"></input>
-                                <label htmlFor="startDateInput">Start Date</label>
-                                <input placeholder={expItem.startDate} type="text" id="startDateInput"></input>
-                                <label htmlFor="endDateInput">End Date</label>
-                                <input placeholder={expItem.endDate} type="text" id="endDateInput"></input>
-                                <label htmlFor="taskInput">task</label>
-                                <input placeholder={expItem.task} type="text" id="taskInput"></input>
-                                <button type="Submit">
-                                    Submit
-                                </button>
-                                <button onClick={() => onDeleteExpItem(expItem.id)}>
-                                    Remove
-                                </button>
+                                <div className='form-fields'>
+                                    <label htmlFor="companyNameInput">Company Name</label>
+                                    <input placeholder={expItem.company} type="text" id="companyNameInput"></input>
+                                    <label htmlFor="titleNameInput">Title</label>
+                                    <input placeholder={expItem.title} type="text" id="titleNameInput"></input>
+                                    <label htmlFor="startDateInput">Start Date</label>
+                                    <input placeholder={expItem.startDate} type="text" id="startDateInput"></input>
+                                    <label htmlFor="endDateInput">End Date</label>
+                                    <input placeholder={expItem.endDate} type="text" id="endDateInput"></input>
+                                    <label htmlFor="descriptionInput">Description</label>
+                                    <textarea placeholder={expItem.description} name="descriptionInput"></textarea>
+                                </div>
+                                <div className='form-buttons'>
+                                    <button type="Submit">
+                                        Submit
+                                    </button>
+                                    <button onClick={() => onDeleteExpItem(expItem.id)}>
+                                        Remove
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     )
@@ -45,12 +49,18 @@ const Exp = (props) => {
                             return (
                                 <div className='itemContent'>
                                     <div className='info'>
-                                        <p>{expItem.company}</p>
-                                        <p>{expItem.title}</p>
+                                        <div className='primary'>
+                                            <p>{expItem.company}</p>
+                                        </div>
+                                        <div className='secondary'>
+                                            <p>{expItem.title}</p>
+                                            <p>{expItem.description}</p>
+                                        </div>
                                     </div>
                                     <div className='dates'>
                                         {expItem.startDate}-{expItem.endDate}
                                     </div>
+                                    <hr></hr>
                                 </div>
                             );
                         })}
@@ -64,10 +74,3 @@ const Exp = (props) => {
 }
 
 export default Exp;
-
-{/* <div className='panel'>
-<h2>{expItem.company}</h2>
-<h2>{expItem.title}</h2>
-<h2>{expItem.startDate} - {expItem.endDate}</h2>
-<h2>{expItem.task}</h2>
-</div>) */}

@@ -24,7 +24,15 @@
 .panel-previewMode .items .itemContent {
     position: relative;
     font-size: 24px;
+    width: 650px;
 }
+
+.panel-previewMode .items .itemContent .info .primary {
+    font-weight: bold;
+}
+
+/* .panel-previewMode .items .itemContent .info .secondary {
+} */
 
 .panel-previewMode .items .itemContent .summary {
     width: 660px;
@@ -33,7 +41,7 @@
 
 .panel-previewMode .items .itemContent .dates {
     position: absolute;
-    right: 80px;
+    right: 0px;
     top: 0px;
 }
 

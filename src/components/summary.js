@@ -8,11 +8,15 @@ const Summary = (props) => {
                 <h2>Summary</h2>
                 <div className='item-editMode'>
                     <form onSubmit={(e) => onSubmitSummary(e)}>
-                        <label htmlFor="summaryInput">Summary</label>
-                        <textarea name='summaryInput' placeholder={summary}></textarea>
-                        <button type="Submit">
-                            Submit
-                        </button>
+                        <div className='form-fields'>
+                            <label htmlFor="summaryInput">Summary</label>
+                            <textarea name='summaryInput' placeholder={summary}></textarea>
+                        </div>
+                        <div className='form-buttons'>
+                            <button type="Submit">
+                                Submit
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>

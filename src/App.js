@@ -75,6 +75,7 @@ class App extends Component {
     eduItem.startDate = e.target.startDateInput.value;
     eduItem.endDate = e.target.endDateInput.value;
     eduItem.degreeTitle = e.target.degreeTitleInput.value;
+    eduItem.gpa = e.target.gpaInput.value;
     this.setState({
       eduItems: copyList,
     })
@@ -95,6 +96,7 @@ class App extends Component {
         startDate: '',
         endDateName: '',
         degreeTitle: '',
+        gpa: '',
         id: uniqid(),
       })
     })
@@ -109,7 +111,7 @@ class App extends Component {
     expItem.title = e.target.titleNameInput.value;
     expItem.startDate = e.target.startDateInput.value;
     expItem.endDate = e.target.endDateInput.value;
-    expItem.task = e.target.taskInput.value;
+    expItem.description = e.target.descriptionInput.value;
     this.setState({
       expItems: copyList,
     })
@@ -130,7 +132,7 @@ class App extends Component {
         title: '',
         startDate: '',
         endDate: '',
-        task: '',
+        description: '',
         id: uniqid(),
       })
     })
@@ -157,12 +159,8 @@ class App extends Component {
 }
 
 /*
-  - NOTE: remove css files not in use
-
-  - add address to basicInfo
-  - add summary, textbox for tasks
-    - add additional tasks w/ button
-  - Change button layout in edit
+  - add additional tasks w/ button
+  - add gpa to education
   
   - onchange vs save changes?
 

@@ -8,19 +8,23 @@ const BasicInfo = (props) => {
                 <h2>Basic Information</h2>
                 <div className='item-editMode'>
                     <form onSubmit={(e) => onSubmitBasicInfo(e)}>
-                        <label htmlFor="firstNameInput">First Name</label>
-                        <input placeholder={basicInfo.firstName} type="text" id="firstNameInput"></input>
-                        <label htmlFor="lastNameInput">Last Name</label>
-                        <input placeholder={basicInfo.lastName} type="text" id="lastNameInput"></input>
-                        <label htmlFor="emailInput">Email Address</label>
-                        <input placeholder={basicInfo.email} type="text" id="emailInput"></input>
-                        <label htmlFor="phoneInput">Phone Number</label>
-                        <input placeholder={basicInfo.phone} type="text" id="phoneInput"></input>
-                        <label htmlFor="addressInput">Address</label>
-                        <input placeholder={basicInfo.address} type="text" id="addressInput"></input>
-                        <button type="Submit">
-                            Submit
-                    </button>
+                        <div className='form-fields'>
+                            <label htmlFor="firstNameInput">First Name</label>
+                            <input placeholder={basicInfo.firstName} type="text" id="firstNameInput"></input>
+                            <label htmlFor="lastNameInput">Last Name</label>
+                            <input placeholder={basicInfo.lastName} type="text" id="lastNameInput"></input>
+                            <label htmlFor="emailInput">Email Address</label>
+                            <input placeholder={basicInfo.email} type="text" id="emailInput"></input>
+                            <label htmlFor="phoneInput">Phone Number</label>
+                            <input placeholder={basicInfo.phone} type="text" id="phoneInput"></input>
+                            <label htmlFor="addressInput">Address</label>
+                            <input placeholder={basicInfo.address} type="text" id="addressInput"></input>
+                        </div>
+                        <div className='form-buttons'>
+                            <button type="Submit">
+                                Submit
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
