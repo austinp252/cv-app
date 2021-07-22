@@ -1,0 +1,62 @@
+.panel-previewMode {
+    margin: 30px 0 0 0;
+    width: 1100px;
+    display: flex;
+    position: relative;
+}
+
+.panel-previewMode .title {
+    margin: 30px 0 0 0;
+    color: rgb(0, 195, 255);
+    font-size: 36px;
+    font-weight: bold;
+    position: absolute;
+    right: 790px;
+    max-width: 230px;
+    word-wrap: break-word;
+}
+
+.panel-previewMode .items {
+    margin: 0 0 30px 360px;
+    width: 740px;
+}
+
+.panel-previewMode .items .itemContent {
+    position: relative;
+    font-size: 24px;
+}
+
+.panel-previewMode .items .itemContent .summary {
+    width: 660px;
+    word-wrap: break-word;
+}
+
+.panel-previewMode .items .itemContent .dates {
+    position: absolute;
+    right: 80px;
+    top: 0px;
+}
+
+.panel-previewMode .basicInfo {
+    display: flex;
+}
+
+.panel-previewMode .basicInfo img{
+    width: 200px;
+    height: 200px;
+    background-color: rgb(124, 124, 124);
+    margin: 50px 50px 0 110px;
+}
+
+.panel-previewMode .basicInfo .name {
+    margin: 35px 40px 0 0;
+    font-size: 90px;
+    font-weight: bold;
+    color: rgb(0, 195, 255);
+}
+
+.panel-previewMode .basicInfo .contact {
+    font-size: 20px;
+}
+
+

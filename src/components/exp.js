@@ -38,17 +38,17 @@ const Exp = (props) => {
     } else {
         if (expItems.length > 0) {
             return (
-                <div className='panel-preview-exp'>
-                    <div className='preview-title'>Experience</div>
-                    <div className='preview-items'>
+                <div className='panel-previewMode'>
+                    <div className='title'>EXPERIENCE</div>
+                    <div className='items'>
                         {expItems.map((expItem) => {
                             return (
-                                <div className='preview-main-content'>
-                                    <div className='preview-job-info'>
+                                <div className='itemContent'>
+                                    <div className='info'>
                                         <p>{expItem.company}</p>
                                         <p>{expItem.title}</p>
                                     </div>
-                                    <div className='preview-job-dates'>
+                                    <div className='dates'>
                                         {expItem.startDate}-{expItem.endDate}
                                     </div>
                                 </div>

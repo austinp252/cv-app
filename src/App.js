@@ -1,5 +1,6 @@
 import './styles/App.css';
 import './styles/editComponent.css';
+import './styles/previewComponent.css';
 import './styles/modeButtons.css';
 
 import React, { Component } from 'react';
@@ -26,6 +27,7 @@ class App extends Component {
         phone: '',
         address: '',
       },
+      summary: '',
       eduItems: [],
       expItems: [],
     }
@@ -44,7 +46,6 @@ class App extends Component {
   };
 
   onSubmitBasicInfo = (e) => {
-
     e.preventDefault();
     this.setState({
       basicInfo: {
@@ -56,6 +57,13 @@ class App extends Component {
       },
     });
 
+  };
+
+  onSubmitSummary = (e) => {
+    e.preventDefault();
+    this.setState({
+      summary: e.target.summaryInput.value,
+    });
   };
 
   onSubmitEduItem = (e, id) => {
@@ -139,7 +147,7 @@ class App extends Component {
         <ModeButtons edit={this.edit} preview={this.preview} />
         <div className='content'>
           <BasicInfo editMode={this.state.editMode} basicInfo={this.state.basicInfo} onSubmitBasicInfo={this.onSubmitBasicInfo} />
-          <Summary editMode={this.state.editMode} />
+          <Summary editMode={this.state.editMode} summary={this.state.summary} onSubmitSummary={this.onSubmitSummary} />
           <Edu editMode={this.state.editMode} eduItems={this.state.eduItems} onSubmitEduItem={this.onSubmitEduItem} onDeleteEduItem={this.onDeleteEduItem} addEduItem={this.addEduItem} />
           <Exp editMode={this.state.editMode} expItems={this.state.expItems} onSubmitExpItem={this.onSubmitExpItem} onDeleteExpItem={this.onDeleteExpItem} addExpItem={this.addExpItem} />
         </div>

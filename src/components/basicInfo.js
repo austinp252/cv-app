@@ -27,12 +27,14 @@ const BasicInfo = (props) => {
         );
     } else {
         return (
-            <div className='panel-preview-basicInfo'>
-                <img></img>
-                <div>
-                    <p className='preview-name'>{basicInfo.firstName} {basicInfo.lastName}</p>
-                    <p className='preview-contact'>{basicInfo.email} | {basicInfo.phone}</p>
-                    <p>{basicInfo.address}</p>
+            <div className='panel-previewMode'>
+                <div className='basicInfo'>
+                    <img></img>
+                    <div>
+                        <p className='name'>{basicInfo.firstName} {basicInfo.lastName}</p>
+                        <p className='contact'>{basicInfo.email} | {basicInfo.phone}</p>
+                        <p>{basicInfo.address}</p>
+                    </div>
                 </div>
             </div>
         );
