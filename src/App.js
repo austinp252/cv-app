@@ -15,23 +15,6 @@ import Exp from './components/exp';
 import uniqid from "uniqid";
 
 const App = () => {
-  // constructor() {
-  //   super();
-
-  //   this.state = { //reinit eduItems
-  //     editMode: true,
-  //     basicInfo: {
-  //       firstName: '',
-  //       lastName: '',
-  //       email: '',
-  //       phone: '',
-  //       address: '',
-  //     },
-  //     summary: '',
-  //     eduItems: [],
-  //     expItems: [],
-  //   }
-  // }
 
   const [editMode, setEditMode] = useState(true);
   const [basicInfo, setBasicInfo] = useState({
@@ -113,7 +96,7 @@ const App = () => {
   }
 
   const onDeleteExpItem = (id) => {
-    let copyList = this.state.expItems;
+    let copyList = expItems;
     copyList = copyList.filter(item => item.id !== id);
     setExpItems(copyList);
   }
