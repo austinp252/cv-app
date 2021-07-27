@@ -3,7 +3,7 @@ import './styles/editComponent.css';
 import './styles/previewComponent.css';
 import './styles/modeButtons.css';
 
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 
 import Header from './components/header';
 import ModeButtons from './components/modeButtons';
@@ -14,97 +14,94 @@ import Exp from './components/exp';
 
 import uniqid from "uniqid";
 
-class App extends Component {
-  constructor() {
-    super();
+const App = () => {
+  // constructor() {
+  //   super();
 
-    this.state = { //reinit eduItems
-      editMode: true,
-      basicInfo: {
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        address: '',
-      },
-      summary: '',
-      eduItems: [],
-      expItems: [],
-    }
-  }
+  //   this.state = { //reinit eduItems
+  //     editMode: true,
+  //     basicInfo: {
+  //       firstName: '',
+  //       lastName: '',
+  //       email: '',
+  //       phone: '',
+  //       address: '',
+  //     },
+  //     summary: '',
+  //     eduItems: [],
+  //     expItems: [],
+  //   }
+  // }
 
-  edit = () => {
-    this.setState({
-      editMode: true,
-    });
+  const [editMode, setEditMode] = useState(true);
+  const [basicInfo, setBasicInfo] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    address: '',
+  });
+  const [summary, setSummary] = useState('');
+  const [eduItems, setEduItems] = useState([]);
+  const [expItems, setExpItems] = useState([]);
+
+  const edit = () => {
+    setEditMode(true);
   };
 
-  preview = () => {
-    this.setState({
-      editMode: false,
-    });
+  const preview = () => {
+    setEditMode(false);
   };
 
-  onSubmitBasicInfo = (e) => {
+  const onSubmitBasicInfo = (e) => {
     e.preventDefault();
-    this.setState({
-      basicInfo: {
-        firstName: e.target.firstNameInput.value,
-        lastName: e.target.lastNameInput.value,
-        email: e.target.emailInput.value,
-        phone: e.target.phoneInput.value,
-        address: e.target.addressInput.value,
-      },
-    });
-
-  };
-
-  onSubmitSummary = (e) => {
-    e.preventDefault();
-    this.setState({
-      summary: e.target.summaryInput.value,
+    setBasicInfo({
+      firstName: e.target.firstNameInput.value,
+      lastName: e.target.lastNameInput.value,
+      email: e.target.emailInput.value,
+      phone: e.target.phoneInput.value,
+      address: e.target.addressInput.value
     });
   };
 
-  onSubmitEduItem = (e, id) => {
+  const onSubmitSummary = (e) => {
     e.preventDefault();
-    let copyList = this.state.eduItems;
+    setSummary(e.target.summaryInput.value);
+  };
+
+  const onSubmitEduItem = (e, id) => {
+    e.preventDefault();
+    let copyList = eduItems;
     let index = copyList.findIndex(item => item.id === id);
     let eduItem = copyList[index];
-    eduItem.uniName = e.target.uniNameInput.value;
+    eduItem.uniName = e.target.uniNameInput.value; //consider refactoring
     eduItem.startDate = e.target.startDateInput.value;
     eduItem.endDate = e.target.endDateInput.value;
     eduItem.degreeTitle = e.target.degreeTitleInput.value;
     eduItem.gpa = e.target.gpaInput.value;
-    this.setState({
-      eduItems: copyList,
-    })
+    setEduItems(copyList);
   };
 
-  onDeleteEduItem = (id) => {
-    let copyList = this.state.eduItems;
+  const onDeleteEduItem = (id) => {
+    let copyList = eduItems;
     copyList = copyList.filter(item => item.id !== id);
-    this.setState({
-      eduItems: copyList,
-    });
+    setEduItems(copyList);
   };
 
-  addEduItem = () => {
-    this.setState({
-      eduItems: this.state.eduItems.concat({
-        uniName: '',
-        startDate: '',
-        endDateName: '',
-        degreeTitle: '',
-        gpa: '',
-        id: uniqid(),
-      })
-    })
+  const addEduItem = () => {
+    setEduItems(eduItems.concat({
+      uniName: '',
+      startDate: '',
+      endDateName: '',
+      degreeTitle: '',
+      gpa: '',
+      id: uniqid()
+    }));
   }
 
-  onSubmitExpItem = (e, id) => {
+  const onSubmitExpItem = (e, id) => {
     e.preventDefault();
-    let copyList = this.state.expItems;
+    let copyList = expItems;
     let index = copyList.findIndex(item => item.id === id);
     let expItem = copyList[index];
     expItem.company = e.target.companyNameInput.value;
@@ -112,50 +109,39 @@ class App extends Component {
     expItem.startDate = e.target.startDateInput.value;
     expItem.endDate = e.target.endDateInput.value;
     expItem.description = e.target.descriptionInput.value;
-    this.setState({
-      expItems: copyList,
-    })
+    setExpItems(copyList);
   }
 
-  onDeleteExpItem = (id) => {
+  const onDeleteExpItem = (id) => {
     let copyList = this.state.expItems;
     copyList = copyList.filter(item => item.id !== id);
-    this.setState({
-      expItems: copyList,
-    });
+    setExpItems(copyList);
   }
 
-  addExpItem = () => {
-    this.setState({
-      expItems: this.state.expItems.concat({
-        company: '',
-        title: '',
-        startDate: '',
-        endDate: '',
-        description: '',
-        id: uniqid(),
-      })
-    })
+  const addExpItem = () => {
+    setExpItems(expItems.concat({
+      company: '',
+      title: '',
+      startDate: '',
+      endDate: '',
+      description: '',
+      id: uniqid(),
+    }));
   }
 
-  render() { //props passed should be named correctly in component
-    const { editMode, basicInfo, eduItem } = this.state;
-    let contentBasic = null;
-    let contentEdu = null;
 
-    return (
-      <div className="App">
-        <Header />
-        <ModeButtons edit={this.edit} preview={this.preview} />
-        <div className='content'>
-          <BasicInfo editMode={this.state.editMode} basicInfo={this.state.basicInfo} onSubmitBasicInfo={this.onSubmitBasicInfo} />
-          <Summary editMode={this.state.editMode} summary={this.state.summary} onSubmitSummary={this.onSubmitSummary} />
-          <Edu editMode={this.state.editMode} eduItems={this.state.eduItems} onSubmitEduItem={this.onSubmitEduItem} onDeleteEduItem={this.onDeleteEduItem} addEduItem={this.addEduItem} />
-          <Exp editMode={this.state.editMode} expItems={this.state.expItems} onSubmitExpItem={this.onSubmitExpItem} onDeleteExpItem={this.onDeleteExpItem} addExpItem={this.addExpItem} />
-        </div>
+  return (
+    <div className="App">
+      <Header />
+      <ModeButtons edit={edit} preview={preview} />
+      <div className='content'>
+        <BasicInfo editMode={editMode} basicInfo={basicInfo} onSubmitBasicInfo={onSubmitBasicInfo} />
+        <Summary editMode={editMode} summary={summary} onSubmitSummary={onSubmitSummary} />
+        <Edu editMode={editMode} eduItems={eduItems} onSubmitEduItem={onSubmitEduItem} onDeleteEduItem={onDeleteEduItem} addEduItem={addEduItem} />
+        <Exp editMode={editMode} expItems={expItems} onSubmitExpItem={onSubmitExpItem} onDeleteExpItem={onDeleteExpItem} addExpItem={addExpItem} />
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 /*
